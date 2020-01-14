@@ -45,8 +45,6 @@ jobs:
       # The test artifacts (video, screenshots, test output) will be uploaded to Cypress dashboard
       # To record on Cypress dashboard we need to set CYPRESS_RECORD_KEY environment variable
       - script: |
-          export CYPRESS_RECORD_KEY=$env:CYPRESS_KEY
+          export CYPRESS_RECORD_KEY=$(cypressKey)
           npm run test:ci:record:windows
         displayName: 'Run Cypress tests'
-        env:
-          CYPRESS_KEY= $(cypressKey)
