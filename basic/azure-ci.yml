@@ -44,5 +44,9 @@ jobs:
       # The next command starts the server and runs Cypress end-to-end tests against it.
       # The test artifacts (video, screenshots, test output) will be uploaded to Cypress dashboard
       # To record on Cypress dashboard we need to set CYPRESS_RECORD_KEY environment variable
-      - script: npm run test:ci:record:windows
+      - script: |
+          export CYPRESS_RECORD_KEY=$env:CYPRESS_KEY
+          npm run test:ci:record:windows
         displayName: 'Run Cypress tests'
+        env:
+          CYPRESS_KEY= $(cypressKey)
